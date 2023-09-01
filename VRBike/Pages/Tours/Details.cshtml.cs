@@ -28,7 +28,16 @@ namespace VRBike.Tours
                 return NotFound();
             }
 
-            var tour = await _context.Tours.FirstOrDefaultAsync(m => m.ID == id);
+            //var tour = await _context.Tours.FirstOrDefaultAsync(m => m.ID == id);
+
+            var tour = await _context.Tours
+                .Include(s => s.Bikeapps)
+                .Include(v => v.Videos)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
+                
+
+
             if (tour == null)
             {
                 return NotFound();
