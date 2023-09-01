@@ -1,0 +1,58 @@
+﻿@page
+@model VRBike.Bikeapps.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Bikeapp</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Bikeapp.TourID" class="control-label"></label>
+                <select asp-for="Bikeapp.TourID" class ="form-control" asp-items="ViewBag.TourID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bikeapp.Title" class="control-label"></label>
+                <input asp-for="Bikeapp.Title" class="form-control" />
+                <span asp-validation-for="Bikeapp.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bikeapp.Description" class="control-label"></label>
+                <input asp-for="Bikeapp.Description" class="form-control" />
+                <span asp-validation-for="Bikeapp.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bikeapp.Link" class="control-label"></label>
+                <input asp-for="Bikeapp.Link" class="form-control" />
+                <span asp-validation-for="Bikeapp.Link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bikeapp.Icon" class="control-label"></label>
+                <input asp-for="Bikeapp.Icon" class="form-control" />
+                <span asp-validation-for="Bikeapp.Icon" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Bikeapp.Active" /> @Html.DisplayNameFor(model => model.Bikeapp.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,60 @@
+﻿@page
+@model VRBike.Videos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Icon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Active)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Video) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.VideoID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.VideoID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.VideoID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
