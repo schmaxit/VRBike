@@ -3,6 +3,24 @@
     "mssql1": {
       "type": "mssql.local",
       "connectionId": "ConnectionStrings:VRBikeContext"
+    },
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "",
+      "secretStore": "LocalSecretsFile",
+      "type": "mssql.local",
+      "connectionId": "localdbvrbike",
+      "dynamicId": null
+    },
+    "mssql3": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.ServiceLinker/locations/westeurope/connectors/vrbike_db_30D8C873F1",
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/vrbikedbserver/databases/VRBike_db",
+      "type": "mssql.azure",
+      "connectionId": "vrbike_db",
+      "dynamicId": null
     }
   }
 }
