@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<VRBikeContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("VRBike_db") ?? throw new InvalidOperationException("Connection string 'VRBikeContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("VRBikeContext") ?? throw new InvalidOperationException("Connection string 'VRBikeContext' not found.")));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -30,7 +30,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
 
     var context = services.GetRequiredService<VRBikeContext>();
-    context.Database.EnsureCreated();
+    //context.Database.EnsureCreated();
     DbInitializer.Initialize(context);
 }
 

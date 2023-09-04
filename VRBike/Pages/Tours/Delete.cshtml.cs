@@ -13,10 +13,12 @@ namespace VRBike.Tours
     public class DeleteModel : PageModel
     {
         private readonly VRBike.Data.VRBikeContext _context;
+        private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(VRBike.Data.VRBikeContext context)
+        public DeleteModel(VRBike.Data.VRBikeContext context, ILogger<DeleteModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
