@@ -2,7 +2,7 @@
 @model VRBike.Tours.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tour Index";
 }
 
 <h1>Index</h1>
@@ -15,6 +15,9 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Tour[0].PageTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tour[0].GeoJsonFile)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Tour[0].Description)
@@ -38,6 +41,9 @@
                 @Html.DisplayFor(modelItem => item.PageTitle)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.GeoJsonFile)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
@@ -50,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.Risorse)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.TourID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TourID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TourID">Delete</a>
             </td>
         </tr>
 }

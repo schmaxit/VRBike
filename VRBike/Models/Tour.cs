@@ -4,16 +4,19 @@ namespace VRBike.Models
 {
     public class Tour
     {
-        public int ID { get; set; }
+        public int TourID { get; set; }
+        public int TourCollectionID { get; set; }
 
-        [Column("PageTitle")]
         public string PageTitle { get; set; }
-
         public string Description { get; set; }
         public string Percorso { get; set; }
         public string Raccolta { get; set; }
         public string Risorse { get; set; }
-        public int RaccoltaID { get; set; }
+        public string GeoJsonFile { get; set; }
+        public string MapCenter { get; set; }
+        public int MapZoom { get; set; }
+
+
 
         public ICollection<Bikeapp> Bikeapps { get; set; }
 

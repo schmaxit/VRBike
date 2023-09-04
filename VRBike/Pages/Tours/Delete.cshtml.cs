@@ -31,7 +31,7 @@ namespace VRBike.Tours
                 return NotFound();
             }
 
-            var tour = await _context.Tours.FirstOrDefaultAsync(m => m.ID == id);
+            var tour = await _context.Tours.FirstOrDefaultAsync(m => m.TourID == id);
 
             if (tour == null)
             {

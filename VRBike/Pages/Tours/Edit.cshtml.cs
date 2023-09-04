@@ -30,7 +30,7 @@ namespace VRBike.Tours
                 return NotFound();
             }
 
-            var tour =  await _context.Tours.FirstOrDefaultAsync(m => m.ID == id);
+            var tour =  await _context.Tours.FirstOrDefaultAsync(m => m.TourID == id);
             if (tour == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace VRBike.Tours
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TourExists(Tour.ID))
+                if (!TourExists(Tour.TourID))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace VRBike.Tours
 
         private bool TourExists(int id)
         {
-          return _context.Tours.Any(e => e.ID == id);
+          return _context.Tours.Any(e => e.TourID == id);
         }
     }
 }

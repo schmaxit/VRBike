@@ -34,7 +34,7 @@ namespace VRBike.Tours
                 .Include(s => s.Bikeapps)
                 .Include(v => v.Videos)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.TourID == id);
                 
 
 

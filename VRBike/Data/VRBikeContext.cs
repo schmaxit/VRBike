@@ -20,11 +20,14 @@ namespace VRBike.Data
 
         public DbSet<VRBike.Models.Video> Videos { get; set; }
 
+        public DbSet<VRBike.Models.TourCollection> ToursCollections { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Tour>().ToTable("Tour");
             modelBuilder.Entity<Video>().ToTable("Video");
             modelBuilder.Entity<Bikeapp>().ToTable("Bikeapp");
+            modelBuilder.Entity<TourCollection>().ToTable("ToursCollection");
         }
     }
 }
