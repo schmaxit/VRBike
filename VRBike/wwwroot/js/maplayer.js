@@ -1,7 +1,7 @@
 ﻿function addLayer(JsonFile, lineweight) {
     console.log("aggiungo layer");
 
-    fetch("/js/" + JsonFile)
+    fetch("/geojson/" + JsonFile)
         .then((res) => res.json())
         .then((data) => {
             // add GeoJSON layer to the map once the file is loaded

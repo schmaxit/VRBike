@@ -24,3 +24,10 @@ body {
 #map {
     height: 450px;
 }
+
+
+.bl-div-icon {
+    background-color: darkmagenta;
+    color: #fff;
+    padding-left: 5px;
+}

@@ -1,0 +1,78 @@
+﻿@page
+@model VRBike.Pages.TourMarkers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TourMarker[0].TourID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourMarker[0].IconSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourMarker[0].Classname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourMarker[0].Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourMarker[0].Html)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourMarker[0].Tooltip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourMarker[0].LinkUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourMarker[0].Active)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TourMarker) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TourID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IconSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Html)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tooltip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TourMarkerID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TourMarkerID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TourMarkerID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

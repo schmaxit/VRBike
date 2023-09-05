@@ -90,6 +90,20 @@
 
             </table>
         </dd>
+        <dd class="col-sm-10">
+            Markers
+            <table class="table">
+                <tr><td>HTML</td><td>Position</td></tr>
+                @foreach (var item in Model.Tour.TourMarkers)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Html)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Position)</td>
+                    </tr>
+                }
+
+            </table>
+        </dd>
     </dl>
 </div>
 <div>
@@ -103,5 +117,14 @@
         getMap(@Model.Tour.MapCenter,@Model.Tour.MapZoom);
         addLayer("@Model.Tour.GeoJsonFile", 8);
     </script>
+
+    @foreach (var item in Model.Tour.TourMarkers)
+    {
+       <script>
+            addTourMarker('@item.Classname', '@item.Html', @item.IconSize, @item.Position, '#')
+        </script>
+
+    }
      
 }
+addTourMarker

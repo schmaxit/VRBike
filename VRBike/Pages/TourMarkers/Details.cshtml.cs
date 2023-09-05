@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using VRBike.Data;
 using VRBike.Models;
 
-namespace VRBike.Tours
+namespace VRBike.Pages.TourMarkers
 {
     public class DetailsModel : PageModel
     {
@@ -19,33 +19,23 @@ namespace VRBike.Tours
             _context = context;
         }
 
-      public Tour Tour { get; set; }
+      public TourMarker TourMarker { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Tours == null)
+            if (id == null || _context.TourMarkers == null)
             {
                 return NotFound();
             }
 
-            //var tour = await _context.Tours.FirstOrDefaultAsync(m => m.ID == id);
-
-            var tour = await _context.Tours
-                .Include(s => s.Bikeapps)
-                .Include(v => v.Videos)
-                .Include(m => m.TourMarkers)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.TourID == id);
-                
-
-
-            if (tour == null)
+            var tourmarker = await _context.TourMarkers.FirstOrDefaultAsync(m => m.TourMarkerID == id);
+            if (tourmarker == null)
             {
                 return NotFound();
             }
             else 
             {
-                Tour = tour;
+                TourMarker = tourmarker;
             }
             return Page();
         }

@@ -15,12 +15,16 @@ namespace VRBike.Models
         public string GeoJsonFile { get; set; }
         public string MapCenter { get; set; }
         public int MapZoom { get; set; }
+        public bool Active { get; set; }
 
 
 
         public ICollection<Bikeapp> Bikeapps { get; set; }
 
         public ICollection<Video> Videos { get; set; }
+
+        public ICollection<TourMarker> TourMarkers { get; set; }
+
 
 
 

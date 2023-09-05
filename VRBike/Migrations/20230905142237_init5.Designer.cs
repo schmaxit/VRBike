@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VRBike.Data;
 
@@ -11,9 +12,11 @@ using VRBike.Data;
 namespace VRBike.Migrations
 {
     [DbContext(typeof(VRBikeContext))]
-    partial class VRBikeContextModelSnapshot : ModelSnapshot
+    [Migration("20230905142237_init5")]
+    partial class init5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -167,8 +170,6 @@ namespace VRBike.Migrations
 
                     b.HasKey("TourMarkerID");
 
-                    b.HasIndex("TourID");
-
                     b.ToTable("TourMarker", (string)null);
                 });
 
@@ -232,15 +233,6 @@ namespace VRBike.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VRBike.Models.TourMarker", b =>
-                {
-                    b.HasOne("VRBike.Models.Tour", null)
-                        .WithMany("TourMarkers")
-                        .HasForeignKey("TourID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("VRBike.Models.Video", b =>
                 {
                     b.HasOne("VRBike.Models.TourCollection", null)
@@ -257,8 +249,6 @@ namespace VRBike.Migrations
             modelBuilder.Entity("VRBike.Models.Tour", b =>
                 {
                     b.Navigation("Bikeapps");
-
-                    b.Navigation("TourMarkers");
 
                     b.Navigation("Videos");
                 });

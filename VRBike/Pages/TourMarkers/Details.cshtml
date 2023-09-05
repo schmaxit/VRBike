@@ -1,0 +1,67 @@
+﻿@page
+@model VRBike.Pages.TourMarkers.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TourMarker</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TourMarker.TourID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TourMarker.TourID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TourMarker.IconSize)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TourMarker.IconSize)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TourMarker.Classname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TourMarker.Classname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TourMarker.Position)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TourMarker.Position)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TourMarker.Html)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TourMarker.Html)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TourMarker.Tooltip)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TourMarker.Tooltip)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TourMarker.LinkUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TourMarker.LinkUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TourMarker.Active)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TourMarker.Active)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.TourMarker?.TourMarkerID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

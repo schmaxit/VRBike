@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VRBike.Data;
 
@@ -11,9 +12,11 @@ using VRBike.Data;
 namespace VRBike.Migrations
 {
     [DbContext(typeof(VRBikeContext))]
-    partial class VRBikeContextModelSnapshot : ModelSnapshot
+    [Migration("20230905081342_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,9 +70,6 @@ namespace VRBike.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TourID"));
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -133,45 +133,6 @@ namespace VRBike.Migrations
                     b.ToTable("ToursCollection", (string)null);
                 });
 
-            modelBuilder.Entity("VRBike.Models.TourMarker", b =>
-                {
-                    b.Property<int>("TourMarkerID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TourMarkerID"));
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Classname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Html")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IconSize")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LinkUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Position")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tooltip")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TourID")
-                        .HasColumnType("int");
-
-                    b.HasKey("TourMarkerID");
-
-                    b.HasIndex("TourID");
-
-                    b.ToTable("TourMarker", (string)null);
-                });
-
             modelBuilder.Entity("VRBike.Models.Video", b =>
                 {
                     b.Property<int>("VideoID")
@@ -232,15 +193,6 @@ namespace VRBike.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VRBike.Models.TourMarker", b =>
-                {
-                    b.HasOne("VRBike.Models.Tour", null)
-                        .WithMany("TourMarkers")
-                        .HasForeignKey("TourID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("VRBike.Models.Video", b =>
                 {
                     b.HasOne("VRBike.Models.TourCollection", null)
@@ -257,8 +209,6 @@ namespace VRBike.Migrations
             modelBuilder.Entity("VRBike.Models.Tour", b =>
                 {
                     b.Navigation("Bikeapps");
-
-                    b.Navigation("TourMarkers");
 
                     b.Navigation("Videos");
                 });

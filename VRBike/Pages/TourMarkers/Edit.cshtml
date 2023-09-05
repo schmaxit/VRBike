@@ -1,0 +1,70 @@
+﻿@page
+@model VRBike.Pages.TourMarkers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TourMarker</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TourMarker.TourMarkerID" />
+            <div class="form-group">
+                <label asp-for="TourMarker.TourID" class="control-label"></label>
+                <input asp-for="TourMarker.TourID" class="form-control" />
+                <span asp-validation-for="TourMarker.TourID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourMarker.IconSize" class="control-label"></label>
+                <input asp-for="TourMarker.IconSize" class="form-control" />
+                <span asp-validation-for="TourMarker.IconSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourMarker.Classname" class="control-label"></label>
+                <input asp-for="TourMarker.Classname" class="form-control" />
+                <span asp-validation-for="TourMarker.Classname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourMarker.Position" class="control-label"></label>
+                <input asp-for="TourMarker.Position" class="form-control" />
+                <span asp-validation-for="TourMarker.Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourMarker.Html" class="control-label"></label>
+                <input asp-for="TourMarker.Html" class="form-control" />
+                <span asp-validation-for="TourMarker.Html" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourMarker.Tooltip" class="control-label"></label>
+                <input asp-for="TourMarker.Tooltip" class="form-control" />
+                <span asp-validation-for="TourMarker.Tooltip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourMarker.LinkUrl" class="control-label"></label>
+                <input asp-for="TourMarker.LinkUrl" class="form-control" />
+                <span asp-validation-for="TourMarker.LinkUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TourMarker.Active" /> @Html.DisplayNameFor(model => model.TourMarker.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
