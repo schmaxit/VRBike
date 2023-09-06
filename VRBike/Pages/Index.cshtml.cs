@@ -25,7 +25,7 @@ namespace VRBike.Pages
 
         public IList<Tour> Tours { get; set; } = default!;
 
-        public async Task OnGetAsync(string sortOrder, string searchString, string currentFilter, string routeType)
+        public async Task OnGetAsync(string sortOrder, string searchString, string currentFilter)
         {
             PageTitleSort = sortOrder == "PageTitle" ? "pageTitle_desc" : "PageTitle";
             DistanzaSort = sortOrder == "Distanza" ? "distanza_desc" : "Distanza";
@@ -51,14 +51,11 @@ namespace VRBike.Pages
                 if (!String.IsNullOrEmpty(searchString))
                 {
                     tourIQ = tourIQ.Where(s => s.Percorso.Contains(searchString)
-                    || s.PageTitle.Contains(searchString));
+                    || s.PageTitle.Contains(searchString)
+                    || s.Raccolta.Contains(searchString));
                 };
 
-                if (!String.IsNullOrEmpty(routeType))
-                {
-                    tourIQ = tourIQ.Where(s => s.Raccolta.Contains(routeType));
-                };
-
+              
                 switch (sortOrder)
                 {
                     case "PageTitle":

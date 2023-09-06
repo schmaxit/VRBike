@@ -19,31 +19,31 @@
     </div>
 </form>
 <p>Official Routes</p>
-<a asp-page="./Index" asp-route-routeType="national" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+<a asp-page="./Index"  asp-route-currentFilter="national" class="btn btn-outline-dark">
     Nazional 
-</a>
-<a asp-page="./Index" asp-route-routeType="regional" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+</a>&nbsp;&nbsp;
+<a asp-page="./Index" asp-route-currentFilter="regional" class="btn btn-outline-dark">
     Regional
-</a>
-<a asp-page="./Index" asp-route-routeType="local" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+</a>&nbsp;&nbsp;
+<a asp-page="./Index"  asp-route-currentFilter="local" class="btn btn-outline-dark">
     Local
-</a>
-<a asp-page="./Index" asp-route-routeType="custoza" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+</a>&nbsp;&nbsp;
+<a asp-page="./Index"  asp-route-currentFilter="custoza" class="btn btn-outline-dark">
     Teree del Custoza
-</a>
-<a asp-page="./Index" asp-route-routeType="valpolicella" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+</a>&nbsp;&nbsp;
+<a asp-page="./Index" asp-route-currentFilter="valpolicella" class="btn btn-outline-dark">
     Valpolicella
 </a>
 <p>order</p>
 <a asp-page="./Index" asp-route-sortOrder="@Model.PageTitleSort" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
     Name
-</a>
+</a>&nbsp;&nbsp;
 <a asp-page="./Index" asp-route-sortOrder="@Model.DistanzaSort" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
     Lenght
-</a>
+</a>&nbsp;&nbsp;
 <a asp-page="./Index" asp-route-sortOrder="@Model.SalitaSort" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
     Ascent
-</a>
+</a>&nbsp;&nbsp;
 
 <table class="table">
     <thead>
