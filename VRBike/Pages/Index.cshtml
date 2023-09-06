@@ -1,0 +1,116 @@
+﻿@page
+@model VRBike.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Tour Index";
+}
+
+
+<div id="map"></div>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name or destination:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to All Tours</a>
+        </p>
+    </div>
+</form>
+<p>Official Routes</p>
+<a asp-page="./Index" asp-route-routeType="national" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+    Nazional 
+</a>
+<a asp-page="./Index" asp-route-routeType="regional" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+    Regional
+</a>
+<a asp-page="./Index" asp-route-routeType="local" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+    Local
+</a>
+<a asp-page="./Index" asp-route-routeType="custoza" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+    Teree del Custoza
+</a>
+<a asp-page="./Index" asp-route-routeType="valpolicella" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+    Valpolicella
+</a>
+<p>order</p>
+<a asp-page="./Index" asp-route-sortOrder="@Model.PageTitleSort" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+    Name
+</a>
+<a asp-page="./Index" asp-route-sortOrder="@Model.DistanzaSort" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+    Lenght
+</a>
+<a asp-page="./Index" asp-route-sortOrder="@Model.SalitaSort" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+    Ascent
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+
+                @Html.DisplayNameFor(model => model.Tours[0].PageTitle)
+
+            </th>
+            <th>
+
+                KM
+
+            </th>
+            <th>
+
+                Ascent
+
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Tours)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PageTitle)<br>
+                    @Html.DisplayFor(modelItem => item.Percorso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Distanza)
+                </td>
+                <td class="flex-sm-nowrap">
+                    @Html.DisplayFor(modelItem => item.Salita)
+                </td>
+
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.TourID" class="invisible">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@item.TourID">Go</a>
+                    <a asp-page="./Delete" asp-route-id="@item.TourID" class="invisible">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts{
+    <script>
+        getMap([45.42, 10.98], 10);
+    </script>
+    @foreach (var item in Model.Tours)
+    {
+        <script>
+            addLayer("@item.GeoJsonFile", 3, "@item.Color");
+        </script>
+        @foreach (var marker in item.TourMarkers)
+        {
+            <script>
+                addTourMarker('@marker.Classname', '@marker.Html', @marker.IconSize, @marker.Position, '#');
+            </script>
+        }
+    }
+}

@@ -1,4 +1,4 @@
-﻿function addLayer(JsonFile, lineweight) {
+﻿function addLayer(JsonFile, lineweight, mapColor) {
     console.log("aggiungo layer");
 
     fetch("/geojson/" + JsonFile)
@@ -7,7 +7,7 @@
             // add GeoJSON layer to the map once the file is loaded
             L.geoJson(data, {
                 style: function (feature) {
-                    return { color: "red", weight: lineweight, opacity: 1 };
+                    return { color: mapColor, weight: lineweight, opacity: 1 };
                 },
             })
                 .addTo(map)

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VRBike.Data;
 
@@ -11,9 +12,11 @@ using VRBike.Data;
 namespace VRBike.Migrations
 {
     [DbContext(typeof(VRBikeContext))]
-    partial class VRBikeContextModelSnapshot : ModelSnapshot
+    [Migration("20230906081316_moreinfo")]
+    partial class moreinfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,9 +73,6 @@ namespace VRBike.Migrations
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Color")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");

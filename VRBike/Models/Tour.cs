@@ -16,6 +16,10 @@ namespace VRBike.Models
         public string MapCenter { get; set; }
         public int MapZoom { get; set; }
         public bool Active { get; set; }
+        public int Distanza { get; set; }
+        public int Salita { get; set; }
+        public int Discesa { get; set; }
+        public string Color { get; set; }
 
 
 

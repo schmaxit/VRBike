@@ -10,55 +10,59 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<p>Order</p>
+<a asp-page="./Index" asp-route-sortOrder="@Model.PageTitleSort" class="btn btn-outline-dark">
+    Name
+</a>
+<a asp-page="./Index" asp-route-sortOrder="@Model.DistanzaSort" class="btn btn-outline-dark">
+   Lenght
+</a>
+<a asp-page="./Index" asp-route-sortOrder="@Model.SalitaSort" class="btn btn-outline-dark">
+   Ascent
+</a>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Tour[0].PageTitle)
+               
+              
+                    @Html.DisplayNameFor(model => model.Tours[0].PageTitle)
+              
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tour[0].GeoJsonFile)
+             
+                   KM
+              
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tour[0].Description)
+               
+                   Ascent
+              
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tour[0].Percorso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tour[0].Raccolta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tour[0].Risorse)
-            </th>
+         
+           
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Tour) {
+@foreach (var item in Model.Tours) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PageTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GeoJsonFile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
+                @Html.DisplayFor(modelItem => item.PageTitle)<br>
                 @Html.DisplayFor(modelItem => item.Percorso)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Raccolta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Risorse)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.TourID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TourID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.TourID">Delete</a>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Distanza)
+                </td>
+                <td class="flex-sm-nowrap">
+                    @Html.DisplayFor(modelItem => item.Salita)
+                </td>
+           
+          
+            <td >
+                    <a asp-page="./Edit" asp-route-id="@item.TourID" class="invisible">Edit</a> 
+                <a asp-page="./Details" asp-route-id="@item.TourID">Go</a> 
+                    <a asp-page="./Delete" asp-route-id="@item.TourID" class="invisible">Delete</a>
             </td>
         </tr>
 }

@@ -74,29 +74,18 @@
 @section Scripts{
     <script>
         getMap([45.42, 10.98], 10);
-
-      
-       
     </script>
     @foreach (var item in Model.TourCollection.Tours)
     {
     <script>
-        addLayer("@item.GeoJsonFile", 3);
+        addLayer("@item.GeoJsonFile", 3,"@item.Color");
      </script>
-
         @foreach (var marker in item.TourMarkers)
         {
-
-
         <script>
             addTourMarker('@marker.Classname', '@marker.Html', @marker.IconSize, @marker.Position, '#');
             </script>
-
     }
-
     }
-
-   
-
 }
 

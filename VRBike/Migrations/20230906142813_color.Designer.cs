@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VRBike.Data;
 
@@ -11,9 +12,11 @@ using VRBike.Data;
 namespace VRBike.Migrations
 {
     [DbContext(typeof(VRBikeContext))]
-    partial class VRBikeContextModelSnapshot : ModelSnapshot
+    [Migration("20230906142813_color")]
+    partial class color
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
