@@ -14,7 +14,7 @@
             Find by name or destination:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
             <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to All Tours</a>
+            <a asp-page="./Index" class="btn btn-outline-dark">All Tours</a>
         </p>
     </div>
 </form>
@@ -44,10 +44,14 @@
 <a asp-page="./Index" asp-route-sortOrder="@Model.SalitaSort" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
     Ascent
 </a>&nbsp;&nbsp;
+<a asp-page="./Index" asp-route-sortOrder="@Model.DifficultySort" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
+    Difficulty
+</a>&nbsp;&nbsp;
 
 <table class="table">
     <thead>
         <tr>
+            <th></th>
             <th>
 
 
@@ -74,8 +78,14 @@
         {
             <tr>
                 <td>
+                    <img src="/images/@Url.Content(item.TumbUrl)" />
+                   
+                </td>
+                <td>
+                    <div class="bl-div-icon">@Html.DisplayFor(modelItem => item.TourMarkers.FirstOrDefault().Html)</div>
                     @Html.DisplayFor(modelItem => item.PageTitle)<br>
-                    @Html.DisplayFor(modelItem => item.Percorso)
+                    @Html.DisplayFor(modelItem => item.Percorso)<br>
+                    Difficulty: @Html.DisplayFor(modelItem => item.Difficulty)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Distanza)
@@ -87,7 +97,7 @@
 
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.TourID" class="invisible">Edit</a>
-                    <a asp-page="./Details" asp-route-id="@item.TourID">Go</a>
+                    <a asp-page="./Tours/Details" asp-route-id="@item.TourID" class="text-decoration-none"><span style=' color:azure'>&#9654;</span></a>
                     <a asp-page="./Delete" asp-route-id="@item.TourID" class="invisible">Delete</a>
                 </td>
             </tr>
@@ -104,13 +114,23 @@
     @foreach (var item in Model.Tours)
     {
         <script>
-            addLayer("@item.GeoJsonFile", 3, "@item.Color");
+            addLayer("@item.GeoJsonFile", 3, "@item.Color", './Tours/Details?id=@item.TourID');
         </script>
         @foreach (var marker in item.TourMarkers)
         {
-            <script>
-                addTourMarker('@marker.Classname', '@marker.Html', @marker.IconSize, @marker.Position, '#');
-            </script>
+           
+            if (item.Raccolta.Contains("local"))
+            {
+                <script>
+                    addLocalMarker('@marker.Classname', '@marker.Html', @marker.IconSize, @marker.Position, './Tours/Details?id=@item.TourID');
+                </script>
+            }
+            else
+            {
+                <script>
+                    addTourMarker('@marker.Classname', '@marker.Html', @marker.IconSize, @marker.Position, './Tours/Details?id=@item.TourID');
+                </script>
+            }
         }
     }
 }

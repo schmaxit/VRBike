@@ -12,6 +12,8 @@ namespace VRBike.Pages
 
         public string DistanzaSort { get; set; }
         public string SalitaSort { get; set; }
+        public string DifficultySort { get; set; }
+        
         public string PageTitleSort { get; set; }
         public string CurrentSort { get; set; }
         public string CurrentFilter { get; set; }
@@ -30,6 +32,7 @@ namespace VRBike.Pages
             PageTitleSort = sortOrder == "PageTitle" ? "pageTitle_desc" : "PageTitle";
             DistanzaSort = sortOrder == "Distanza" ? "distanza_desc" : "Distanza";
             SalitaSort = sortOrder == "Salita" ? "salita_desc" : "Salita";
+            DifficultySort = sortOrder == "Difficulty" ? "difficulty_desc" : "Difficulty";
 
             if (searchString != null)
             {
@@ -70,6 +73,10 @@ namespace VRBike.Pages
                         tourIQ = tourIQ.OrderBy(t => t.Salita); break;
                     case "salita_desc":
                         tourIQ = tourIQ.OrderByDescending(t => t.Salita); break;
+                    case "Difficulty":
+                        tourIQ = tourIQ.OrderBy(t => t.Difficulty); break;
+                    case "difficulty_desc":
+                        tourIQ = tourIQ.OrderByDescending(t => t.Difficulty); break;
                     default:
                         tourIQ = tourIQ.OrderBy(t => t.PageTitle); break;
 

@@ -20,6 +20,9 @@ namespace VRBike.Models
         public int Salita { get; set; }
         public int Discesa { get; set; }
         public string Color { get; set; }
+        public string TumbUrl { get; set; }
+        public string Difficulty { get; set; }
+        
 
 
 

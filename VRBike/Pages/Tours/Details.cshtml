@@ -115,7 +115,7 @@
 @section Scripts{
     <script>
         getMap(@Model.Tour.MapCenter,@Model.Tour.MapZoom);
-        addLayer("@Model.Tour.GeoJsonFile", 8);
+        addLayer("@Model.Tour.GeoJsonFile", 8, "@Model.Tour.Color");
     </script>
 
     @foreach (var item in Model.Tour.TourMarkers)

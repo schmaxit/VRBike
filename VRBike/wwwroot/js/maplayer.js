@@ -1,5 +1,5 @@
-﻿function addLayer(JsonFile, lineweight, mapColor) {
-    console.log("aggiungo layer");
+﻿function addLayer(JsonFile, lineweight, mapColor,linkUrl) {
+    console.log("aggiungo layer: " + JsonFile);
 
     fetch("/geojson/" + JsonFile)
         .then((res) => res.json())
@@ -12,7 +12,7 @@
             })
                 .addTo(map)
                 .on("click", function (ev) {
-                    window.location.href = "#";
+                    window.location.href = linkUrl;
                     console.log("map cliccato");
                 });
         });

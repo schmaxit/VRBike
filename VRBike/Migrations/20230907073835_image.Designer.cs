@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VRBike.Data;
 
@@ -11,9 +12,11 @@ using VRBike.Data;
 namespace VRBike.Migrations
 {
     [DbContext(typeof(VRBikeContext))]
-    partial class VRBikeContextModelSnapshot : ModelSnapshot
+    [Migration("20230907073835_image")]
+    partial class image
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,9 +78,6 @@ namespace VRBike.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Difficulty")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Discesa")

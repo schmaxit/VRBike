@@ -76,7 +76,13 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
   });
   map.on("zoomend", function (e) {
     console.log("scripts zoom: " + e.target._zoom);
-    zoomlevel = e.target._zoom;
+      zoomlevel = e.target._zoom;
+      if (map.getZoom() > 10) {
+          console.log("maggiore di 10");
+          map.addLayer(LocalLayerGroup);
+      } else {
+          map.removeLayer(LocalLayerGroup);
+      }
   });
 
   Watermark = L.Control.extend({
@@ -173,7 +179,7 @@ function addCircle() {
 }
 
 const controllo = mobileAndTabletCheck();
-if (controllo) {
+if (true) {
   const options = {
     enableHighAccuracy: true,
     maximumAge: 5000,
@@ -206,7 +212,8 @@ if (controllo) {
       if (circle != undefined) {
         circle.setLatLng([lat, lon]);
       } else {
-        addCircle();
+          if (controllo) { addCircle(); }
+       
       }
     } else {
       console.log("no map");
