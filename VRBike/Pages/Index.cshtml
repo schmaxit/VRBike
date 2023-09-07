@@ -9,32 +9,47 @@
 <div id="map"></div>
 
 <form asp-page="./Index" method="get">
-    <div class="form-actions no-color">
+    <div class="form-actions no-color mt-2">
         <p>
-            Find by name or destination:
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" placeholder="search tour" />
             <input type="submit" value="Search" class="btn btn-primary" /> |
             <a asp-page="./Index" class="btn btn-outline-dark">All Tours</a>
         </p>
     </div>
 </form>
-<p>Official Routes</p>
-<a asp-page="./Index"  asp-route-currentFilter="national" class="btn btn-outline-dark">
+<div class="row">
+    <div class="mt-1 col-12 col-sm-12 col-md">
+        <a asp-page="./Index" asp-route-currentFilter="national" class="btn btn-outline-dark d-grid">
     Nazional 
-</a>&nbsp;&nbsp;
-<a asp-page="./Index" asp-route-currentFilter="regional" class="btn btn-outline-dark">
-    Regional
-</a>&nbsp;&nbsp;
-<a asp-page="./Index"  asp-route-currentFilter="local" class="btn btn-outline-dark">
-    Local
-</a>&nbsp;&nbsp;
-<a asp-page="./Index"  asp-route-currentFilter="custoza" class="btn btn-outline-dark">
-    Teree del Custoza
-</a>&nbsp;&nbsp;
-<a asp-page="./Index" asp-route-currentFilter="valpolicella" class="btn btn-outline-dark">
-    Valpolicella
-</a>
-<p>order</p>
+</a></div>
+    <div class="mt-1 col-12 col-sm-12 col-md">
+        <a asp-page="./Index" asp-route-currentFilter="regional" class="btn btn-outline-dark  d-grid">
+            Regional
+        </a>
+    </div>
+    <div class="mt-1 col-12 col-sm-12 col-md">
+        <a asp-page="./Index" asp-route-currentFilter="local" class="btn btn-outline-dark  d-grid">
+            Local
+        </a>
+    </div>
+    <div class="mt-1 col-12 col-sm-12 col-md">
+        <a asp-page="./Index" asp-route-currentFilter="custoza" class="btn btn-outline-dark  d-grid">
+            Teree del Custoza
+        </a>
+    </div>
+    <div class="mt-1 col-12 col-sm-12 col-md">
+        <a asp-page="./Index" asp-route-currentFilter="valpolicella" class="btn btn-outline-dark  d-grid">
+            Valpolicella
+        </a>
+    </div>
+    <div class="mt-1 col-12 col-sm-12 col-md">
+        <a asp-page="./Index" asp-route-currentFilter="easy" class="btn btn-outline-dark  d-grid">
+            Easy
+        </a>
+    </div>
+</div>
+
+<p class="mt-2">order</p>
 <a asp-page="./Index" asp-route-sortOrder="@Model.PageTitleSort" asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-outline-dark">
     Name
 </a>&nbsp;&nbsp;
@@ -53,24 +68,14 @@
         <tr>
             <th></th>
             <th>
-
-
-                @Html.DisplayNameFor(model => model.Tours[0].PageTitle)
-
-            </th>
+                Tour
+           </th>
             <th>
-
                 KM
-
             </th>
             <th>
-
                 Ascent
-
             </th>
-
-
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -78,27 +83,23 @@
         {
             <tr>
                 <td>
+                    <a asp-page="./Tours/Details" asp-route-id="@item.TourID" class="text-decoration-none">
                     <img src="/images/@Url.Content(item.TumbUrl)" />
-                   
+                   </a>
                 </td>
                 <td>
+                    <a asp-page="./Tours/Details" asp-route-id="@item.TourID" class="text-decoration-none">
                     <div class="bl-div-icon">@Html.DisplayFor(modelItem => item.TourMarkers.FirstOrDefault().Html)</div>
                     @Html.DisplayFor(modelItem => item.PageTitle)<br>
                     @Html.DisplayFor(modelItem => item.Percorso)<br>
                     Difficulty: @Html.DisplayFor(modelItem => item.Difficulty)
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Distanza)
                 </td>
                 <td class="flex-sm-nowrap">
                     @Html.DisplayFor(modelItem => item.Salita)
-                </td>
-
-
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.TourID" class="invisible">Edit</a>
-                    <a asp-page="./Tours/Details" asp-route-id="@item.TourID" class="text-decoration-none"><span style=' color:azure'>&#9654;</span></a>
-                    <a asp-page="./Delete" asp-route-id="@item.TourID" class="invisible">Delete</a>
                 </td>
             </tr>
         }

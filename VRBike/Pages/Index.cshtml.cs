@@ -55,7 +55,9 @@ namespace VRBike.Pages
                 {
                     tourIQ = tourIQ.Where(s => s.Percorso.Contains(searchString)
                     || s.PageTitle.Contains(searchString)
-                    || s.Raccolta.Contains(searchString));
+                    || s.Raccolta.Contains(searchString)
+                    || s.Difficulty.Contains(searchString)
+                    );
                 };
 
               
