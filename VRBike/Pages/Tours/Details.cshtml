@@ -5,111 +5,63 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
 <div id="map"></div>
 
-
-<div>
+<div class="mb-5">
     <h4>Tour</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tour.PageTitle)
-        </dt>
-        <dd class="col-sm-10">
+       
+        <dd class="col-sm-12 text-center h3">
             @Html.DisplayFor(model => model.Tour.PageTitle)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tour.GeoJsonFile)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tour.GeoJsonFile)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tour.MapCenter)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tour.MapCenter)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tour.MapZoom)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tour.MapZoom)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tour.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tour.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tour.Percorso)
-        </dt>
-        <dd class="col-sm-10">
+        
+        <dd class="col-sm-12 h5">
             @Html.DisplayFor(model => model.Tour.Percorso)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tour.Raccolta)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tour.Raccolta)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tour.Risorse)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tour.Risorse)
-        </dd>
-        <dd class="col-sm-10">
-            Show tour in:
-            <table class="table">
-                <tr><td>titolo</td><td>link</td></tr>
-                @foreach(var item in Model.Tour.Bikeapps)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Link)</td>
-                    </tr>             
-                }
 
-            </table>
+        <dd class="col-sm-12">
+            @Html.DisplayFor(model => model.Tour.Description)
         </dd>
-        <dd class="col-sm-10">
-            Videos
-            <table class="table">
-                <tr><td>titolo</td><td>link</td></tr>
+     
+       
+        <dd class="col-sm-12">          
                 @foreach (var item in Model.Tour.Videos)
                 {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Link)</td>
-                    </tr>
+                <a href="@item.Link" target="_blank" class=" text-decoration-none">
+                   <dl class="mt-3 row">
+                       <dd class="col-sm-12 col-md text-center"><img src="~/youtubeTumb/@item.Icon" class="img-thumbnail">
+                        
+                            <div class="h4 text-center">Youtube video</div>
+                        </dd>
+                        <dd class="col-sm-12 col-md">@Html.DisplayFor(modelItem => item.Title)</dd>
+                   </dl>
+                </a>
+                   
                 }
 
-            </table>
+          
         </dd>
-        <dd class="col-sm-10">
-            Markers
-            <table class="table">
-                <tr><td>HTML</td><td>Position</td></tr>
-                @foreach (var item in Model.Tour.TourMarkers)
+        <dd class="col-sm-12">
+            Show tour in:
+           
+                @foreach (var item in Model.Tour.Bikeapps)
                 {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Html)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Position)</td>
-                    </tr>
+                <a href="@item.Link" target="_blank" class=" text-decoration-none">
+                    <dl class="mt-3 row">
+                        <dd class="col-sm-12">
+                            <img src="~/icons/@item.Icon" class="komootsvg">
+                            <span class="h4 text-center">@item.Title</span>
+                        </dd>                     
+                    </dl>
+                </a>               
                 }
 
-            </table>
+           
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Tour?.TourID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+
 
 
 @section Scripts{
@@ -127,4 +79,3 @@
     }
      
 }
-addTourMarker

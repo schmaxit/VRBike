@@ -77,7 +77,7 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
   map.on("zoomend", function (e) {
     console.log("scripts zoom: " + e.target._zoom);
       zoomlevel = e.target._zoom;
-      if (map.getZoom() > 10) {
+      if (map.getZoom() >= 11) {
           console.log("maggiore di 10");
           map.addLayer(LocalLayerGroup);
       } else {
