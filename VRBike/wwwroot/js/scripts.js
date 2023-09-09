@@ -69,14 +69,11 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
   map.on("click", function (e) {
     console.log("map click");
     if (map.customControl) {
-      //let cont = map.customControl.getContainer();
-      //console.log(center);
-      center = false;
-      //cont.style.backgroundColor = "white";
-      //cont.style.color = "black";
         container.style.backgroundColor = "white";
         container.style.color = "black";
         container.value = "start navigation";
+        clearWatch();
+        center = false;
     }
   });
   map.on("zoomend", function (e) {
@@ -91,6 +88,7 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
       container.style.backgroundColor = "white";
       container.style.color = "black";
       container.value = "start navigation";
+      clearWatch();
       center = false;
   });
     var container = L.DomUtil.create("input", "navContainer");
@@ -115,17 +113,19 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
 
       container.onclick = function (e) {
         L.DomEvent.stopPropagation(e);
-        console.log("buttonClicked: " + center);
-        center = !center;
+       
+          center = !center;
+          console.log("navigation clicked : " + center);
         if (center) {
           container.style.backgroundColor = "blue";
             container.style.color = "white";
             container.value = "stop navigation";
+            startWatch();
         } else {
           container.style.backgroundColor = "white";
-            container.style.color = "black";
-           
+            container.style.color = "black";     
             container.value = "start navigation";
+            clearWatch();
         }
       };
 
@@ -143,42 +143,6 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
 
   watermark({ position: "bottomleft" }).addTo(map);
 
-  MyImg = L.Control.extend({
-    onAdd: function (map) {
-      map.mycustomImg = this;
-      var img = L.DomUtil.create("img");
-      img.src = "/images/location.svg";
-      img.style.height = "60px";
-      if (center) {
-        img.src = "/images/location.svg";
-      } else {
-        img.src = "/image/locationGray.svg";
-      }
-
-      img.onclick = function (e) {
-        L.DomEvent.stopPropagation(e);
-        console.log("imgClicked: " + center);
-        center = !center;
-        if (center) {
-          img.src = "/images/location.svg";
-        } else {
-          img.src = "/images/locationGray.svg";
-        }
-      };
-
-      return img;
-    },
-
-    onRemove: function (map) {
-      // Nothing to do here
-    },
-  });
-
-  myImg = function (opts) {
-    return new MyImg(opts);
-  };
-
- // myImg({ position: "bottomleft" }).addTo(map);
 }
 
 function addCircle() {
@@ -192,54 +156,64 @@ function addCircle() {
   }).addTo(map);
 }
 
-const controllo = mobileAndTabletCheck();
-if (true) {
-  const options = {
+const options = {
     enableHighAccuracy: true,
     maximumAge: 5000,
     timeout: 5000,
-  };
+};
 
-  function error(error) {
+function error(error) {
     console.log("no position detected");
     lat = 45.42;
     lon = 10.98;
-  }
+}
 
-  const watchID = navigator.geolocation.watchPosition(
-    showPosition,
-    error,
-    options
-  );
-
-  function showPosition(position) {
+function showPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
-      console.log("position found: " + lat + " " + lon);
-    console.log("center:" + center)
+    console.log("position found: " + lat + " " + lon);
+   
     //lat = 45.42;
     //lon = 10.98;
     if (map != undefined) {
-      if (center) {
-          map.setView([lat, lon], zoomlevel, { animation: true });
-          if (circle != undefined) {
-              circle.setLatLng([lat, lon]);
-          } else {
-              addCircle();
+        if (center) {
+            map.setView([lat, lon], zoomlevel, { animation: true });
+            if (circle != undefined) {
+                circle.setLatLng([lat, lon]);
+                if (!map.hasLayer(circle)) {
+                    map.addLayer(circle);
+                }
 
-          }
-      }
-      //
-     
+                console.log("map as circle: " + map.hasLayer(circle));
+            } else {
+                addCircle();
+
+            }
+        }
+        //
+
     } else {
-      console.log("no map");
-      // getMap();
+        console.log("no map");
+        // getMap();
     }
-  }
-} else {
-  console.log("desk");
-  if (map != undefined) {
-  } else {
-    //getMap();
-  }
 }
+
+let watchID="";
+function startWatch() {
+    watchID = navigator.geolocation.watchPosition(
+        showPosition,
+        error,
+        options
+    );
+};
+
+function clearWatch() {
+    navigator.geolocation.clearWatch(watchID);
+    console.log("center: " + center);
+    if (circle != undefined) {
+        map.removeLayer(circle);
+    }
+};
+
+  
+
