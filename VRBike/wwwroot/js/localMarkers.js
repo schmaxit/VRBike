@@ -1,6 +1,6 @@
 ﻿var LocalLayerGroup = L.layerGroup();
 function addLocalMarker(classname, text, iconsize, position, linkurl) {
-    console.log('local marker: ' + text)
+   
     var localmarkersLayer = L.featureGroup();
     var Icon = L.divIcon({
         className: classname,

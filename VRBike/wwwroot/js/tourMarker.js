@@ -1,6 +1,6 @@
 ﻿var layerGroup = L.layerGroup();
 function addTourMarker(classname, text, iconsize, position, linkurl) {
-    console.log('tour marker: ' + text)
+   
     var markersLayer = L.featureGroup();
     var Icon = L.divIcon({
         className: classname,
