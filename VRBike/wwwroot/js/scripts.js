@@ -12,8 +12,10 @@ var circle;
 var zoomlevel = 10;
 var viewCenter = [45.42, 10.98];
 let viewMinZoom = 9;
-let center = true;
+let center = false;
 
+
+//obsoleta
 mobileAndTabletCheck = function () {
   let check = false;
   (function (a) {
@@ -41,7 +43,7 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
     viewMinZoom = mapminzoom;
   }
 
-  console.log("passo da getmap 2");
+  console.log("passo da getmap");
     console.log(mapcenter);
     console.log(mapzoom);
   map = L.map("map");
@@ -67,11 +69,14 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
   map.on("click", function (e) {
     console.log("map click");
     if (map.customControl) {
-      let cont = map.customControl.getContainer();
-      console.log(center);
+      //let cont = map.customControl.getContainer();
+      //console.log(center);
       center = false;
-      cont.style.backgroundColor = "white";
-      cont.style.color = "black";
+      //cont.style.backgroundColor = "white";
+      //cont.style.color = "black";
+        container.style.backgroundColor = "white";
+        container.style.color = "black";
+        container.value = "start navigation";
     }
   });
   map.on("zoomend", function (e) {
@@ -83,23 +88,29 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
       } else {
           map.removeLayer(LocalLayerGroup);
       }
+      container.style.backgroundColor = "white";
+      container.style.color = "black";
+      container.value = "start navigation";
+      center = false;
   });
-
+    var container = L.DomUtil.create("input", "navContainer");
   Watermark = L.Control.extend({
     onAdd: function (map) {
       map.customControl = this;
-      var container = L.DomUtil.create("input");
+     
       container.type = "button";
-      container.title = "center";
-      container.value = "center";
-      container.style.height = "40px";
+          container.title = "center";
+          container.style.height = "40px";
+      
 
       if (center) {
         container.style.backgroundColor = "blue";
-        container.style.color = "white";
+          container.style.color = "white";
+          container.value = "stop navigation";
       } else {
         container.style.backgroundColor = "white";
-        container.style.color = "black";
+          container.style.color = "black";
+          container.value = "start navigation";
       }
 
       container.onclick = function (e) {
@@ -108,10 +119,13 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
         center = !center;
         if (center) {
           container.style.backgroundColor = "blue";
-          container.style.color = "white";
+            container.style.color = "white";
+            container.value = "stop navigation";
         } else {
           container.style.backgroundColor = "white";
-          container.style.color = "black";
+            container.style.color = "black";
+           
+            container.value = "start navigation";
         }
       };
 
@@ -127,7 +141,7 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
     return new Watermark(opts);
   };
 
-  //watermark({ position: "bottomleft" }).addTo(map);
+  watermark({ position: "bottomleft" }).addTo(map);
 
   MyImg = L.Control.extend({
     onAdd: function (map) {
@@ -164,7 +178,7 @@ function getMap(mapcenter, mapzoom, mapminzoom) {
     return new MyImg(opts);
   };
 
-  myImg({ position: "bottomleft" }).addTo(map);
+ // myImg({ position: "bottomleft" }).addTo(map);
 }
 
 function addCircle() {
@@ -201,20 +215,22 @@ if (true) {
   function showPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
-    console.log("position found: " + lat + " " + lon);
+      console.log("position found: " + lat + " " + lon);
+    console.log("center:" + center)
     //lat = 45.42;
     //lon = 10.98;
     if (map != undefined) {
       if (center) {
-        map.setView([lat, lon], zoomlevel, { animation: true });
+          map.setView([lat, lon], zoomlevel, { animation: true });
+          if (circle != undefined) {
+              circle.setLatLng([lat, lon]);
+          } else {
+              addCircle();
+
+          }
       }
       //
-      if (circle != undefined) {
-        circle.setLatLng([lat, lon]);
-      } else {
-          if (controllo) { addCircle(); }
-       
-      }
+     
     } else {
       console.log("no map");
       // getMap();

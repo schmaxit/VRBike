@@ -112,9 +112,7 @@ namespace VRBike.Data
                 new Bikeapp { TourID = 13, Title = "Komoot", Link = "https://www.komoot.com/it-it/tour/1268235279?ref=wtd&share_token=aDd96Os8CC0c27GOZ4atKl08kJu1A4F55JqHWxmfxNsYpccQ2N", Icon = "komoot.svg" },
                 new Bikeapp{ TourID = 13, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/recording/12-verona-fiamene-fosse?referrer=gpsies",Icon="alltrails.png"},
                 new Bikeapp{ TourID = 14, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/map/map--116877?u=m",Icon="alltrails.png"},
-                new Bikeapp{ TourID = 13, Title="Google Maps" , Link="",Icon="google.png"},
-                new Bikeapp{ TourID = 7, Title="Google Maps" , Link="",Icon="google.png"},
-                new Bikeapp { TourID = 13, Title = "Komoot", Link = "", Icon = "komoot.svg" },
+               
             }; 
 
             context.Bikeapps.AddRange(bikeapps);
