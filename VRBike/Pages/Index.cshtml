@@ -90,8 +90,9 @@
                 <td>
                     <a asp-page="./Tours/Details" asp-route-id="@item.TourID" class="text-decoration-none">
                     <div class="bl-div-icon">@Html.DisplayFor(modelItem => item.TourMarkers.FirstOrDefault().Html)</div>
+                   
+                        <h4>@Html.DisplayFor(modelItem => item.Percorso)</h4>
                     @Html.DisplayFor(modelItem => item.PageTitle)<br>
-                    @Html.DisplayFor(modelItem => item.Percorso)<br>
                     Difficulty: @Html.DisplayFor(modelItem => item.Difficulty)
                     </a>
                 </td>
