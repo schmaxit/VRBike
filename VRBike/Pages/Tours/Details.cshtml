@@ -2,7 +2,14 @@
 @model VRBike.Tours.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Tour.PageTitle;
+   
+}
+
+@section metatags
+    {
+    <meta name="Description" content="@Model.Tour.Description" />
+    <meta name="Author" content="Verona Bike" />
 }
 
 <div id="map"></div>
@@ -14,6 +21,12 @@
        
         <dd class="col-sm-12 text-center h3">
             @Html.DisplayFor(model => model.Tour.PageTitle)
+        </dd>
+        <dd class="col-sm-12 text-center h5">
+            Km: @Html.DisplayFor(model => model.Tour.Distanza)
+            Ascent: @Html.DisplayFor(model => model.Tour.Salita)
+            Descent: @Html.DisplayFor(model => model.Tour.Discesa)
+            difficulty: @Html.DisplayFor(model => model.Tour.Difficulty)
         </dd>
         
         <dd class="col-sm-12 h5">
