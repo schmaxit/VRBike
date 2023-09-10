@@ -39,7 +39,8 @@ namespace VRBike.Data
                 new Tour{Difficulty="3: medium",TumbUrl = "valpo11.webp", Color="blue",Distanza=20,Salita=130,Discesa=100, MapCenter="[45.55, 10.8]",MapZoom=10,GeoJsonFile="valpo11.json",TourCollectionID=1 ,PageTitle="valpolicella tour 11" , Raccolta="valpolicella, local", Percorso="Verona, Domegliara", Description="Giro in E-MTB intermedio. Adatto a ogni livello di allenamento. Alcune parti del percorso potrebbero essere non asfaltate o difficili da percorrere in bici."},
                 new Tour{Difficulty="5: very challenging",TumbUrl="valpo12.webp",Color="blue",Distanza=32,Salita=1120,Discesa=260, MapCenter="[45.55, 10.95]",MapZoom=10,GeoJsonFile="valpo12.json",TourCollectionID=1 ,PageTitle="valpolicella tour 12" , Raccolta="valpolicella, local, montagna, collina", Percorso="Verona, Avesa, Sant'Anna d'Alfaedo, Fosse", Description="Giro in e-bike per esperti. Ottimo allenamento richiesto. Superfici perlopiù asfaltate. Adatto a ogni livello di abilità."},
                 new Tour{Difficulty="4: challenging",TumbUrl = "ev7.webp", Color="blue",Distanza=33,Salita=524,Discesa=150, MapCenter="[45.55, 10.9]",MapZoom=10,GeoJsonFile="valpo46.json",TourCollectionID=1 ,PageTitle="valpolicella tour 46" , Raccolta="valpolicella, local, adige, collina", Percorso="Verona, Domegliara, Dolcè, Peri", Description="46 Corno, Settimo, Ponton, Volargne, Ceraino, Dolcè, Peri Collegamento tra la Ciclabile del Sole e la Ciclabile della Terra di Forti"},
-                new Tour{Difficulty="5: very challenging",TumbUrl = "aida.webp", Color="red",Distanza=178,Salita=800,Discesa=930, MapCenter="[45.55, 10.9]",MapZoom=10,GeoJsonFile="aida.json",TourCollectionID=1 ,PageTitle="ciclovia Aida" , Raccolta="national, collina", Percorso="Brescia,Peschiera del Garda, Sommacampagna, Verona,Soave, Vicenza", Description="bicitalia 12 - ciclovia pedemontana alpina 9 - terre del Custoza 16, Giro in e-bike per esperti. Ottimo allenamento richiesto. Alcune parti del percorso potrebbero essere non asfaltate o difficili da percorrere in bici."}
+                new Tour{Difficulty="5: very challenging",TumbUrl = "aida.webp", Color="red",Distanza=178,Salita=800,Discesa=930, MapCenter="[45.55, 10.9]",MapZoom=10,GeoJsonFile="aida.json",TourCollectionID=1 ,PageTitle="ciclovia Aida" , Raccolta="national, collina", Percorso="Brescia,Peschiera del Garda, Sommacampagna, Verona,Soave, Vicenza", Description="bicitalia 12 - ciclovia pedemontana alpina 9 - terre del Custoza 16, Giro in e-bike per esperti. Ottimo allenamento richiesto. Alcune parti del percorso potrebbero essere non asfaltate o difficili da percorrere in bici."},
+                new Tour{Difficulty="5: challenging",TumbUrl = "a1.webp", Color="blue",Distanza=25,Salita=730,Discesa=730, MapCenter="[45.56, 10.9]",MapZoom=10,GeoJsonFile="a1.json",TourCollectionID=1 ,PageTitle="Grezzana A1" , Raccolta="local, collina, grezzana", Percorso="Grezzana, Vigo, monte Comun, Stallavena", Description="Suggestivo percorso da Grezzana verso il Monte Comun con un interessante passaggio sterrato facile sotto il monte Dordera. Molto panoramico sia sul versante della Valpantena che su quello della Valpolicella; in località Saline è possibile scorgere anche il Lago di Garda."}
 
             };
 
@@ -75,7 +76,9 @@ namespace VRBike.Data
                 new TourMarker{TourID=11, Classname="bl-div-icon", Html="I2", IconSize="[20, 20]", Position="[45.478687, 11.48]"},
                 new TourMarker{TourID=11, Classname="bl-div-icon", Html="I2", IconSize="[20, 20]", Position="[45.409064, 11.265]"},
                 new TourMarker{TourID=14, Classname="bl-div-icon", Html="46", IconSize="[25, 20]", Position="[45.62, 10.866]"},
-                
+                new TourMarker{TourID=16, Classname="bl-div-icon", Html="A1", IconSize="[25, 20]", Position="[45.55, 10.9845]"},
+
+
             };
             context.TourMarkers.AddRange(tourMarkers);
             context.SaveChanges();
@@ -87,6 +90,7 @@ namespace VRBike.Data
                 new Bikeapp{ TourID = 7, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/map/percorso-gpx-f885a14?u=m&sh=awpf2v",Icon="alltrails.png"},
                 new Bikeapp{ TourID = 7, Title="Komoot" , Link="https://www.komoot.com/it-it/tour/1207822756?ref=wtd",Icon="komoot.svg"},
                 new Bikeapp{ TourID = 7, Title="Google Maps" , Link="https://www.google.com/maps/d/u/0/edit?mid=1ULFcri5u-SIZzEf7WXh07rPfFfxya9M&ll=45.31108352488681%2C11.154302999999981&z=11",Icon="google.png"},
+                new Bikeapp{ TourID = 1, Title="Google Maps" , Link="https://www.google.com/maps/d/u/0/edit?mid=1-YNur1EyJzVb8_8NBTOuryR7UpG5aV0&ll=45.47117140879776%2C10.783753500000012&z=13",Icon="google.png"},
                 new Bikeapp{ TourID = 3, Title="Google Maps" , Link="https://www.google.com/maps/d/u/0/edit?mid=1UD1cxGbGZQ58wTL3QX3Rw2H-hvw4SDM&ll=45.31238889168365%2C11.5305435&z=7",Icon="google.png"},
                 new Bikeapp { TourID = 3, Title = "Komoot", Link = "https://www.komoot.com/it-it/tour/1215486611?ref=wtd", Icon = "komoot.svg" },
                 new Bikeapp{ TourID = 15, Title="Google Maps" , Link="https://www.google.com/maps/d/u/0/edit?mid=1J0wTNtFUx8Mt3MOZ4ZUdXGkBNxPqwrM&ll=45.513595528633346%2C10.36688899999998&z=8",Icon="google.png"},
@@ -112,7 +116,10 @@ namespace VRBike.Data
                 new Bikeapp { TourID = 13, Title = "Komoot", Link = "https://www.komoot.com/it-it/tour/1268235279?ref=wtd&share_token=aDd96Os8CC0c27GOZ4atKl08kJu1A4F55JqHWxmfxNsYpccQ2N", Icon = "komoot.svg" },
                 new Bikeapp{ TourID = 13, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/recording/12-verona-fiamene-fosse?referrer=gpsies",Icon="alltrails.png"},
                 new Bikeapp{ TourID = 14, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/map/map--116877?u=m",Icon="alltrails.png"},
-               
+                new Bikeapp{ TourID = 16, Title="Alltrails" , Link="https://www.alltrails.com/explore/map/map-363763e-6",Icon="alltrails.png"},
+                new Bikeapp { TourID = 16, Title = "Komoot", Link = "https://www.komoot.com/it-it/tour/1288204519", Icon = "komoot.svg" },
+
+
             }; 
 
             context.Bikeapps.AddRange(bikeapps);
