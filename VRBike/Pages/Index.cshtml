@@ -87,6 +87,8 @@
     <tbody>
         @foreach (var item in Model.Tours)
         {
+            if (item.Active)
+            {
             <tr>
                 <td>
                     <a asp-page="./Tours/Details" asp-route-id="@item.TourID" class="text-decoration-none">
@@ -109,6 +111,7 @@
                     @Html.DisplayFor(modelItem => item.Salita)
                 </td>
             </tr>
+            }
         }
     </tbody>
 </table>
@@ -121,24 +124,29 @@
     </script>
     @foreach (var item in Model.Tours)
     {
-        <script>
-            addLayer("@item.GeoJsonFile", 3, "@item.Color", './Tours/Details?id=@item.TourID');
-        </script>
-        @foreach (var marker in item.TourMarkers)
+        if (item.Active)
         {
-           
-            if (item.Raccolta.Contains("local"))
+            <script>
+                addLayer("@item.GeoJsonFile", 3, "@item.Color", './Tours/Details?id=@item.TourID');
+            </script>
+            @foreach (var marker in item.TourMarkers)
             {
-                <script>
-                    addLocalMarker('@marker.Classname', '@marker.Html', @marker.IconSize, @marker.Position, './Tours/Details?id=@item.TourID');
-                </script>
+
+                if (item.Raccolta.Contains("local"))
+                {
+                    <script>
+                        addLocalMarker('@marker.Classname', '@marker.Html', @marker.IconSize, @marker.Position, './Tours/Details?id=@item.TourID');
+                    </script>
+                }
+                else
+                {
+                    <script>
+                        addTourMarker('@marker.Classname', '@marker.Html', @marker.IconSize, @marker.Position, './Tours/Details?id=@item.TourID');
+                    </script>
+                }
             }
-            else
-            {
-                <script>
-                    addTourMarker('@marker.Classname', '@marker.Html', @marker.IconSize, @marker.Position, './Tours/Details?id=@item.TourID');
-                </script>
-            }
+
         }
     }
+
 }
