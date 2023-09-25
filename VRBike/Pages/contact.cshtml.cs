@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace VRBike.Pages
 {
-    public class bikeModel : PageModel
+    public class contactModel : PageModel
     {
         public void OnGet()
         {
