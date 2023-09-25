@@ -155,6 +155,7 @@ namespace VRBike.Data
                 new Video{Icon="verona-bussolengo.jpg", TourID =11, Title="ciclabile regione veneto I1, Verona, Bussolengo, Fuul Video GPS, cicloturismo, Biffis", Link ="https://www.youtube.com/watch?v=QInQaADQAH4"},
                 new Video{Icon="camuzzoni.jpg", TourID =11, Title="Verona Pista ciclabile, Diga Chievo Porta Palio canale Camuzzoni Full Video GPS, cicloturismo, ebike", Link ="https://www.youtube.com/watch?v=skg_Wwkl2hU"},
                 new Video{Icon="risorgiveYT.webp", TourID =9, Title="Verona ciclabile delle risorgive, Zevio fiume Adige Povegliano, Full video GPS, cicloturismo, ebike", Link ="https://www.youtube.com/watch?v=UFszpAUKCSc"},
+                new Video{Icon="Video11A.webp", TourID =17, Title="Verona Bike, Valpolicella tour ufficiale 11A Parona Arbizzano, cicloturismo, GPS", Link ="https://youtu.be/3BK6OKA9JW4"},
             };
 
             context.Videos.AddRange(videos);
