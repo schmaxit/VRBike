@@ -49,6 +49,8 @@ namespace VRBike.Pages
             {
                 IQueryable<Tour> tourIQ = from t in _context.Tours
                                           .Include(m => m.TourMarkers)
+                                          .Include(b => b.Bikeapps)
+                                          .Include(v => v.Videos)
                                           select t;
 
                 if (!String.IsNullOrEmpty(searchString))

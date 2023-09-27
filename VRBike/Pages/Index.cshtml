@@ -97,7 +97,17 @@
                 </td>
                 <td>
                     <a asp-page="./Tours/Details" asp-route-id="@item.TourID" class="text-decoration-none">
-                    <div class="bl-div-icon">@Html.DisplayFor(modelItem => item.TourMarkers.FirstOrDefault().Html)</div>
+                            <div class="bl-div-icon align-middle">
+                                @Html.DisplayFor(modelItem => item.TourMarkers.FirstOrDefault().Html)&nbsp;
+                                @if(item.Videos.Count() > 0)
+                                {
+                                    <img src="~/icons/youtube.png" class="youtube mb-1">
+                                }
+                                @foreach(var app in item.Bikeapps)
+                                {
+                                    <img src="~/icons/@app.Icon" class="youtube mb-1">
+                                }
+                            </div>
                    
                         <h4>@Html.DisplayFor(modelItem => item.Percorso)</h4>
                     @Html.DisplayFor(modelItem => item.PageTitle)<br>
