@@ -44,7 +44,9 @@ namespace VRBike.Data
                 new Tour{Difficulty="2: easy",TumbUrl = "11A.webp", Color="blue",Distanza=8,Salita=140,Discesa=30, MapCenter="[45.494663, 10.867992]",MapZoom=12,GeoJsonFile="11A.json",TourCollectionID=1 ,PageTitle="Valpolicella tour 11A" , Raccolta="local, collina, valpolicella", Percorso="Parona, Arbizzano, S. Maria, S. Vito, Moron, Negrar di Valpolicella", Description="Itinerario di accesso a Negrar da Parona. Presenta un percorso pianeggiante con due tratti sterrati prima di Arbizzano e tra Santa Maria e San Vito.\r\nIl percorso in direzione opposta (verso sud) è differente rispetto alla traccia GPS in rispetto della viabilità esistente: seguire la segnaletica).\r\nAdatto a tutte le biciclette, non richiede particolare allenamento.",Active = true},
                 new Tour{Difficulty="2: easy",TumbUrl = "11B.webp", Color="blue",Distanza=8,Salita=63,Discesa=0, MapCenter="[45.494663, 10.867992]",MapZoom=12,GeoJsonFile="11B.json",TourCollectionID=1 ,PageTitle="Valpolicella tour 11B" , Raccolta="local, collina, valpolicella", Percorso="Valgatara, S. Floriano, Arbizzano, Quar, Arbizzano", Description="Collegamento da Arbizzano a Valgatara; pianeggiante ed asfaltato con esclusione del collegamento con Arbizzano. Su viabilità minore.\r\nAdatto a tutte le biciclette, non richiede particolare allenamento.",Active = true},
                 new Tour{Difficulty="2: easy",TumbUrl = "16A.webp", Color="blue",Distanza=19,Salita=160,Discesa=160, MapCenter="[45.494663, 10.867992]",MapZoom=12,GeoJsonFile="16A.json",TourCollectionID=1 ,PageTitle="Valpolicella tour 16A" , Raccolta="local, collina, valpolicella", Percorso="Arcè, Bure, San Micheletto, Fumane, Casterna, San Pietro in Cariano, Pescantina", Description="Percorso pianeggiante con qualche limitata rampetta breve; due brevi tratti sterrati dopo Arcè e dopo San Pietro in Cariano; su viabilità minore è adatto a tutte le biciclette e non richiede particolare allenamento.",Active = true},
-                new Tour{Difficulty="3: medium",TumbUrl = "47.webp", Color="blue",Distanza=27,Salita=778,Discesa=810, MapCenter="[45.522005, 10.889948]",MapZoom=12,GeoJsonFile="47.json",TourCollectionID=1 ,PageTitle="Valpolicella tour 47" , Raccolta="local, collina, valpolicella", Percorso="Negrar di Valp.-Marano di Valp.-Fumane--Mazzurega-San Giorgio di Valp.-Sant’Ambrogio di Valp.", Description="Da Negrar scavalcamento di tre dorsali pedemontane, la Masua, Marano e Cavalo;\r\ndecisamente movimentato con salite ripetute. Richiede allenamento alle salite e biciclette adatte.",Active = true}
+                new Tour{Difficulty="3: medium",TumbUrl = "47.webp", Color="blue",Distanza=27,Salita=778,Discesa=810, MapCenter="[45.522005, 10.889948]",MapZoom=12,GeoJsonFile="47.json",TourCollectionID=1 ,PageTitle="Valpolicella tour 47" , Raccolta="local, collina, valpolicella", Percorso="Negrar di Valp.-Marano di Valp.-Fumane--Mazzurega-San Giorgio di Valp.-Sant’Ambrogio di Valp.", Description="Da Negrar scavalcamento di tre dorsali pedemontane, la Masua, Marano e Cavalo;\r\ndecisamente movimentato con salite ripetute. Richiede allenamento alle salite e biciclette adatte.",Active = true},
+                new Tour{Difficulty="2: easy",TumbUrl = "valsugana.webp", Color="blue",Distanza=40,Salita=120,Discesa=370, MapCenter="[46.047981, 11.459785]",MapZoom=12,GeoJsonFile="valsugana.json",TourCollectionID=1 ,PageTitle="Valsugana" , Raccolta="local, epmc", Percorso="Valsugana", Description="EPMC 2023",Active = true},
+                new Tour{Difficulty="2: easy",TumbUrl = "bolzano.webp", Color="blue",Distanza=16,Salita=50,Discesa=50, MapCenter="[46.495938, 11.358688]",MapZoom=12,GeoJsonFile="bolzano.json",TourCollectionID=1 ,PageTitle="Bolzano" , Raccolta="local, collina, epmc", Percorso="Bolzano", Description="EPMC 2023",Active = true}
             };
 
             context.Tours.AddRange(tours);
@@ -86,6 +88,8 @@ namespace VRBike.Data
                 new TourMarker{TourID=18, Classname="bl-div-icon", Html="11B", IconSize="[30, 20]", Position="[45.52, 10.910]"},
                 new TourMarker{TourID=19, Classname="bl-div-icon", Html="16A", IconSize="[30, 20]", Position="[45.52, 10.87257]"},
                 new TourMarker{TourID=20, Classname="bl-div-icon", Html="47", IconSize="[25, 20]", Position="[45.55, 10.912]"},
+                new TourMarker{TourID=21, Classname="bl-div-icon", Html="Valsugana", IconSize="[70, 20]", Position="[46.047981, 11.459785]"},
+                new TourMarker{TourID=22, Classname="bl-div-icon", Html="Bolzano", IconSize="[60, 20]", Position="[46.495938, 11.358688]"},
 
 
             };
@@ -136,7 +140,14 @@ namespace VRBike.Data
                 new Bikeapp{ TourID = 19, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/map/16a-arce-bure-san-micheletto-fumane-casterna-san-pietro-in-cariano-pescantina?referrer=gpsies.com&fileId=tmgmcjfazatxcyon",Icon="alltrails.png"},
                 new Bikeapp { TourID = 20, Title = "Komoot", Link = "https://www.komoot.com/it-it/tour/1323213960?ref=wtd&share_token=aeebDG78LSBAqFmKgyU0WVw7xj4fCDCofMVnlUDXsdX4Mpb45X", Icon = "komoot.svg" },
                 new Bikeapp{ TourID = 20, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/map/47-negrar-di-valp-marano-di-valp-fumane-mazzurega-san-giorgio-di-valp-santambrogio-di-valp?u=m",Icon="alltrails.png"},
+                
+                new Bikeapp { TourID = 21, Title = "Komoot", Link = "https://www.komoot.com/it-it/tour/1326222899?ref=wtd&share_token=ajEZasc8ICKGXiCbqIixAiPCSfiwMGGNSF32OYmaWBWOjnm4xl", Icon = "komoot.svg" },
+                new Bikeapp{ TourID = 21, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/map/valsugana-10-epmc-2023-158fc2d?u=m&sh=awpf2v",Icon="alltrails.png"},
+                new Bikeapp{ TourID = 21, Title="Wikiloc" , Link="https://it.wikiloc.com/percorsi-bicicletta-da-turismo/valsugana-10-epmc-2023-148422308",Icon="wikiloc.png"},
 
+                new Bikeapp { TourID = 22, Title = "Komoot", Link = "https://www.komoot.com/it-it/tour/1326222559?ref=wtd&share_token=amk7QMk6wRs3VaG8zRrn3NChdujg55uU4eXrj1a0uJygfG9CU2", Icon = "komoot.svg" },
+                new Bikeapp{ TourID = 22, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/map/bolzano-10-epmc-2023-faad952?u=m&sh=awpf2v",Icon="alltrails.png"},
+                new Bikeapp{ TourID = 22, Title="Wikiloc" , Link="https://it.wikiloc.com/percorsi-bicicletta-da-turismo/bolzano-10-epmc-2023-148422236",Icon="wikiloc.png"},
 
             }; 
 
