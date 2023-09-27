@@ -144,10 +144,12 @@ namespace VRBike.Data
                 new Bikeapp { TourID = 21, Title = "Komoot", Link = "https://www.komoot.com/it-it/tour/1326222899?ref=wtd&share_token=ajEZasc8ICKGXiCbqIixAiPCSfiwMGGNSF32OYmaWBWOjnm4xl", Icon = "komoot.svg" },
                 new Bikeapp{ TourID = 21, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/map/valsugana-10-epmc-2023-158fc2d?u=m&sh=awpf2v",Icon="alltrails.png"},
                 new Bikeapp{ TourID = 21, Title="Wikiloc" , Link="https://it.wikiloc.com/percorsi-bicicletta-da-turismo/valsugana-10-epmc-2023-148422308",Icon="wikiloc.png"},
+                new Bikeapp{ TourID = 21, Title="Google Maps" , Link="https://www.google.com/maps/d/u/0/edit?mid=1e0Xjjx7HH1S-Z6fDJY_DGl8jqcOWYHc&usp=sharing",Icon="google.png"},
 
                 new Bikeapp { TourID = 22, Title = "Komoot", Link = "https://www.komoot.com/it-it/tour/1326222559?ref=wtd&share_token=amk7QMk6wRs3VaG8zRrn3NChdujg55uU4eXrj1a0uJygfG9CU2", Icon = "komoot.svg" },
                 new Bikeapp{ TourID = 22, Title="Alltrails" , Link="https://www.alltrails.com/it-it/explore/map/bolzano-10-epmc-2023-faad952?u=m&sh=awpf2v",Icon="alltrails.png"},
                 new Bikeapp{ TourID = 22, Title="Wikiloc" , Link="https://it.wikiloc.com/percorsi-bicicletta-da-turismo/bolzano-10-epmc-2023-148422236",Icon="wikiloc.png"},
+                new Bikeapp{ TourID = 22, Title="Google Maps" , Link="https://www.google.com/maps/d/u/0/edit?mid=1jPhyxAgtAAHf4b4zpmbPziqb_7Erat0&usp=sharing",Icon="google.png"}
 
             }; 
 
